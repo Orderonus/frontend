@@ -9,6 +9,7 @@ import {
   SectionContainer,
   ListBox,
   ListColumn,
+  ScrollContainer,
 } from "./CartPageElements";
 import { BtnSecondary } from "../../../AppComponents";
 
@@ -42,25 +43,29 @@ function CartPage() {
     <ContentContainer>
       <OrangeContainer>
         <WhiteContainer>
-          <SectionContainer flex={2}>
+          <SectionContainer flex={3}>
             <Title>Order Summary</Title>
-            {Object.entries(orders).map(([key, value]) => (
-              <ListBox>
-                <ListColumn flex={3}>
-                  <div>
-                    {value.name}
-                    <br />
-                    {value.modifiers.map((modifier) => (
-                      <li>{modifier}</li>
-                    ))}
-                  </div>
-                </ListColumn>
-                <ListColumn flex={1}>{`${value.quantity} pc`}</ListColumn>
-                <ListColumn flex={1}>{value.price}</ListColumn>
-              </ListBox>
-            ))}
+            <ScrollContainer>
+              {Object.entries(orders).map(([key, value]) => (
+                <ListBox>
+                  <ListColumn flex={3}>
+                    <div>
+                      {value.name}
+                      <br />
+                      {value.modifiers.map((modifier) => (
+                        <li>{modifier}</li>
+                      ))}
+                    </div>
+                  </ListColumn>
+                  <ListColumn flex={1}>{`${value.quantity} pc`}</ListColumn>
+                  <ListColumn flex={1}>{`$${value.price.toFixed(
+                    2
+                  )}`}</ListColumn>
+                </ListBox>
+              ))}
+            </ScrollContainer>
           </SectionContainer>
-          <SectionContainer flex={1}>
+          <SectionContainer flex={2}>
             <Title>Price Summary</Title>
             {[
               ["Subtotal", subtotal],

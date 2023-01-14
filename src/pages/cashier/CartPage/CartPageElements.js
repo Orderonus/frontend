@@ -37,7 +37,7 @@ export const ButtonContainer = styled.div`
 export const WhiteContainer = styled.div`
   display: flex;
   height: 100%;
-  max-height: 100%;
+  max-height: 90%;
   width: 100%;
   border-radius: 15px;
   align-items: center;
@@ -47,21 +47,8 @@ export const WhiteContainer = styled.div`
   flex-direction: row;
 `;
 
-//
-export const Box = styled.div`
-  font-size: 1.2rem;
-  font-weight: 400;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  margin: 2rem;
-  background: purple;
-  height: 100%;
-  weight: 100%;
-`;
-
 export const Title = styled.div`
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
 `;
@@ -72,7 +59,8 @@ export const ListBox = styled.div`
   overflow: hidden;
   overflow-y: scroll;
   display: flex;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 `;
 
 export const ListColumn = styled.div`
@@ -90,4 +78,10 @@ export const SectionContainer = styled.div`
   padding: 2rem;
   box-sizing: border-box;
   flex: ${(props) => props.flex};
+`;
+
+export const ScrollContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
 `;
