@@ -55,10 +55,32 @@ export const Box = styled.div`
 export const Title = styled.div`
   font-size: 1.5rem;
   font-weight: 700;
+  margin-bottom: 1rem;
+`;
+
+export const CheckboxItem = styled.div`
+  margin: 1rem 0;
+`;
+
+export const CounterContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Input = styled.input`
+  border: 3px solid ${Colors.primary};
+  background: ${Colors.white};
+  border-radius: 15px;
+  display: block;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 export const FoodImage = styled.image`
-  background-image: url("https://i0.wp.com/seonkyounglongest.com/wp-content/uploads/2018/04/shoyu-ramen-1.jpg");
+  background-image: url("http://172.31.47.170:8000/media/dishes/download.jfif");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

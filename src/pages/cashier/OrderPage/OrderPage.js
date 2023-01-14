@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   ButtonContainer,
@@ -6,29 +6,62 @@ import {
   OrangeContainer,
   WhiteContainer,
   Title,
+  Input,
   FoodImage,
+  CheckboxItem,
+  CounterContainer,
 } from "./OrderPageElements";
 import { BtnSecondary } from "../../../AppComponents";
-
-modifiers = {
-  "Add egg": 0.5,
-  "Add noodles": 1,
-  "Add meat": 1,
-  "Less spicy": 0,
-};
+import Form from "react-bootstrap/Form";
+import IncrementIcon from "../../../assets/Increment.png";
+import DecrementIcon from "../../../assets/Decrement.png";
 
 function OrderPage() {
+  const modifiers = {
+    "Add egg": 0.5,
+    "Add noodles": 1,
+    "Add meat": 1,
+    "Less spicy": 0,
+  };
+
+  const [quantity, setQuantity] = useState(0);
+
   return (
     <ContentContainer>
       <OrangeContainer>
         <WhiteContainer>
-          {/* <Box>
+          <Box>
             <Title>Ramen</Title>
             <FoodImage />
-          </Box> */}
+          </Box>
 
           <Box>
             <Title>Modifiers</Title>
+            <Form>
+              {Object.entries(modifiers).map(([key, value]) => (
+                <CheckboxItem>
+                  <Form.Check
+                    type={"checkbox"}
+                    id={key}
+                    label={`${key} ($${value.toFixed(2)})`}
+                  />
+                </CheckboxItem>
+              ))}
+            </Form>
+          </Box>
+
+          <Box>
+            <Title>Quantity</Title>
+            <CounterContainer>
+              <img src={IncrementIcon} alt="Increment" />
+              {quantity}
+              <img src={DecrementIcon} alt="Decrement" />
+            </CounterContainer>
+          </Box>
+
+          <Box>
+            <Title>Comments</Title>
+            <Input />
           </Box>
         </WhiteContainer>
         <ButtonContainer>
