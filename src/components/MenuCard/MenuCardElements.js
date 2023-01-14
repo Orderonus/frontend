@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Colors } from "../../Theme";
-import RamenImage from "../../assets/Ramen.jpg";
 
 export const MenuCardContainer = styled.div`
   background-color: ${Colors.primary};
@@ -10,7 +9,6 @@ export const MenuCardContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  width: 20rem;
 `;
 
 export const MenuCardImage = styled.image`

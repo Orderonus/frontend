@@ -4,19 +4,19 @@ import AdminIcon from "../../assets/Admin Icon.png";
 import CashierIcon from "../../assets/Cashier Icon.png";
 import KitchenIcon from "../../assets/Kitchen Icon.png";
 import ProfileIcon from "../../assets/Profile Icon.png";
-import { Display, DisplayIcon, DisplayText } from "./ProfileDisplayElements";
+import { Display, DisplayText } from "./ProfileDisplayElements";
 
 function ProfileDisplay({ username, role }) {
   function getIcon(role) {
     switch (role) {
       case Roles.Admin:
-        return <img src={AdminIcon} width={30} />;
+        return <img src={AdminIcon} alt="Admin" width={30} />;
       case Roles.Cashier:
-        return <img src={CashierIcon} width={30} />;
+        return <img src={CashierIcon} alt="Cashier" width={30} />;
       case Roles.Kitchen:
-        return <img src={KitchenIcon} width={30} />;
+        return <img src={KitchenIcon} alt="Kitchen" width={30} />;
       case Roles.Profile:
-        return <img src={ProfileIcon} width={30} />;
+        return <img src={ProfileIcon} alt="Profile" width={30} />;
       default:
         break;
     }

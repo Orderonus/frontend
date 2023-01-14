@@ -18,9 +18,10 @@ function CashierPage() {
     <Main>
       <NavBar>
         <NavMenu>
-          <img src={QueueIcon} width={35} />
+          <img src={QueueIcon} alt="Queue" width={35} />
           <div>
-            Physical orders: <b>0</b>, Online orders: <b>0</b>
+            Physical orders: <b>{numOrdersPhysical}</b>, Online orders:{" "}
+            <b>{numOrdersOnline}</b>
           </div>
         </NavMenu>
       </NavBar>
@@ -28,12 +29,15 @@ function CashierPage() {
       <ContentContainer>
         <SideBar>Hi</SideBar>
         <MenuCards>
-          <MenuCard
-            name="Ramen"
-            imageUrl="https://hips.hearstapps.com/hmg-prod/images/190208-delish-ramen-horizontal-093-1550096715.jpg?crop=0.903xw:0.760xh;0.0297xw,0.0123xh&resize=480:*"
-            price={20}
-            description="A Tasty Treat for Your Everyday Eat"
-          />
+          {[...Array(7)].map((i) => (
+            <MenuCard
+              key={i}
+              name="Ramen"
+              imageUrl="https://hips.hearstapps.com/hmg-prod/images/190208-delish-ramen-horizontal-093-1550096715.jpg?crop=0.903xw:0.760xh;0.0297xw,0.0123xh&resize=480:*"
+              price={20}
+              description="A Tasty Treat for Your Everyday Eat"
+            />
+          ))}
         </MenuCards>
       </ContentContainer>
     </Main>

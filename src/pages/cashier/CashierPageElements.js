@@ -30,8 +30,8 @@ export const MenuCards = styled.div`
 
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: auto auto auto;
-
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 20rem;
   overflow: hidden;
   overflow-y: auto;
 `;

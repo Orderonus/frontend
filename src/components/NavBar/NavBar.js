@@ -21,7 +21,7 @@ function NavBar(props) {
       <NavbarContainer>
         <NavLogo to="/">
           <NavIcon>
-            <img src={Logo} width={150} />
+            <img src={Logo} alt="Logo" width={150} />
           </NavIcon>
         </NavLogo>
         <MenuIcon>{props.children}</MenuIcon>
