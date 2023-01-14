@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import { ContentContainer, Main, NavMenu } from "./CashierPageElements";
+import { ContentContainer, Main } from "./CashierPageElements";
+import { NavMenu } from "../../AppComponents";
 import QueueIcon from "../../assets/Queue Icon.png";
 import SideBar from "../../components/SideBar/SideBar";
 
