@@ -13,10 +13,6 @@ function CashierPage() {
       <NavBar>
         <NavMenu>
           <img src={QueueIcon} width={35} />
-          {/* <div>
-            Pending orders: {numOrdersPhysical} Physical, {numOrdersOnline}{" "}
-            Online
-          </div> */}
           <div>
             Physical orders: <b>0</b>, Online orders: <b>0</b>
           </div>
