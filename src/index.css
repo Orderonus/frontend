@@ -1,6 +1,5 @@
 * {
-  font-family: 'Comfortaa';
-  background-color: gray;
+  font-family: "Comfortaa";
 }
 
 body {
@@ -10,6 +9,6 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
