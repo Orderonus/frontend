@@ -38,7 +38,7 @@ export const NavLogo = styled(Link)`
   text-decoration: none;
   transition: all 0.5s ease;
   &:hover {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
 `;
 
@@ -47,12 +47,12 @@ export const NavIcon = styled.image`
   transition: all 0.5s ease;
 
   &:hover {
-    transform: scale(2);
+    transform: scale(1.05);
   }
 `;
 
 export const MenuIcon = styled.div`
-  display: none;
+  /* display: none; */
 `;
 
 export const Menu = styled.ul`
@@ -69,21 +69,16 @@ export const MenuItem = styled.li`
 export const MenuLink = styled(Link)`
   text-decoration: none;
   font-weight: bold;
-  font-size: 2rem;
-  color: #fff;
+  font-size: 1.5rem;
+  color: ${Colors.primary};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0;
   height: 100%;
   transition: all 0.2s ease;
 
   &:hover {
-    color: #e38b06;
-    transform: traslateY(-3rem);
-  }
-  &:active {
-    transform: traslateY(3rem);
-    color: #e38b06;
+    filter: brightness(80%);
   }
 `;

@@ -11,16 +11,16 @@ import {
   MenuLink,
 } from "./NavBarElements";
 
-function NavBar() {
+function NavBar(props) {
   return (
     <Nav>
       <NavbarContainer>
         <NavLogo to="/">
           <NavIcon>
-            <img src={Logo} />
+            <img src={Logo} width={150} />
           </NavIcon>
         </NavLogo>
-        <MenuIcon>MenuIcon</MenuIcon>
+        <MenuIcon>{props.children}</MenuIcon>
 
         <Menu>
           <MenuItem>

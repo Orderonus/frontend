@@ -5,7 +5,7 @@ import { Main } from "./CashierPageElements";
 function CashierPage() {
   return (
     <Main>
-      <NavBar />
+      <NavBar>Navbar</NavBar>
       <div>CashierPage</div>
     </Main>
   );
