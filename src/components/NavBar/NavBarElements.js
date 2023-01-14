@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Nav = styled.nav`
-  font-size: 18px;
+  font-size: 1.2rem;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -69,7 +69,7 @@ export const MenuItem = styled.li`
 export const MenuLink = styled(Link)`
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: ${Colors.primary};
   display: flex;
   justify-content: space-between;

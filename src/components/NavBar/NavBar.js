@@ -11,10 +11,11 @@ import {
   MenuLink,
 } from "./NavBarElements";
 import ProfileDisplay from "../ProfileDisplay/ProfileDisplay";
+import { Roles } from "../../utils/Enums";
 
 function NavBar(props) {
   const [username, setUsername] = useState("Sarah Tan");
-  const [role, setRole] = useState("Cashier");
+  const [role, setRole] = useState(Roles.Cashier);
   return (
     <Nav>
       <NavbarContainer>
@@ -28,7 +29,7 @@ function NavBar(props) {
         <Menu>
           <MenuItem>
             <MenuLink to="/profile">
-              <ProfileDisplay />
+              <ProfileDisplay username={username} role={role} />
             </MenuLink>
           </MenuItem>
         </Menu>
