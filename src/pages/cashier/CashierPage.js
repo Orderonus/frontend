@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
+import SideBar from "../../components/cashier/SideBar/SideBar";
+import MenuCard from "../../components/cashier/MenuCard/MenuCard";
+
 import {
   ContentContainer,
   Main,
   NavMenu,
   MenuCards,
 } from "./CashierPageElements";
+
 import QueueIcon from "../../assets/Queue Icon.png";
-import SideBar from "../../components/SideBar/SideBar";
-import MenuCard from "../../components/MenuCard/MenuCard";
 
 function CashierPage() {
   const [numOrdersPhysical, setNumOrdersPhysical] = useState(0);
