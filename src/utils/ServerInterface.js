@@ -2,10 +2,6 @@ const axios = require("axios");
 const BACKEND_URL = "http://172.31.47.170:8000";
 
 // Settings for this to work.
-axios.defaults.baseURL = BACKEND_URL;
-axios.defaults.withCredentials = true;
-axios.defaults.headers.post["Content-Type"] = "application/json";
-
 const instance = axios.create({
   baseURL: BACKEND_URL,
   withCredentials: true,
