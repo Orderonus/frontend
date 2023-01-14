@@ -28,6 +28,12 @@ function OrderPage() {
 
   const [quantity, setQuantity] = useState(0);
 
+  const [comment, setComment] = useState("");
+
+  const handleCommentChange = (event) => {
+    setComment(event.target.value);
+  };
+
   return (
     <ContentContainer>
       <OrangeContainer>
@@ -65,7 +71,7 @@ function OrderPage() {
 
             <Box>
               <Title>Comments</Title>
-              <Input />
+              <Input value={comment} onChange={handleCommentChange} />
             </Box>
           </BtmSectionContainer>
         </WhiteContainer>

@@ -4,6 +4,7 @@ import NavBar from "../../components/shared/NavBar/NavBar";
 import SideBar from "../../components/cashier/SideBar/SideBar";
 import MenuPage from "./MenuPage/MenuPage";
 import OrderPage from "./OrderPage/OrderPage";
+import CartPage from "./CartPage/CartPage";
 import {
   ContentContainer,
   Main,
@@ -34,6 +35,7 @@ function CashierPage() {
           <Routes>
             <Route path="/" element={<MenuPage />} />
             <Route path="/order" element={<OrderPage />} />
+            <Route path="/cart" element={<CartPage />} />
           </Routes>
         </PageContainer>
       </ContentContainer>
