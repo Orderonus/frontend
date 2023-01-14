@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import NavBar from "../../components/NavBar/NavBar";
+import NavBar from "../../components/shared/NavBar/NavBar";
 import SideBar from "../../components/cashier/SideBar/SideBar";
 import MenuCard from "../../components/cashier/MenuCard/MenuCard";
-
 import {
   ContentContainer,
   Main,
   NavMenu,
   MenuCards,
 } from "./CashierPageElements";
-
 import QueueIcon from "../../assets/Queue Icon.png";
 
 function CashierPage() {

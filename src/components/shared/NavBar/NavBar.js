@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../../assets/Logo.png";
 import {
   Nav,
   NavbarContainer,
@@ -11,7 +11,7 @@ import {
   MenuLink,
 } from "./NavBarElements";
 import ProfileDisplay from "../ProfileDisplay/ProfileDisplay";
-import { Roles } from "../../utils/Enums";
+import { Roles } from "../../../utils/Enums";
 
 function NavBar(props) {
   const [username, setUsername] = useState("Sarah Tan");
