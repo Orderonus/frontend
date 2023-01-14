@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/cashier" element={<CashierPage />} />
-        <Route exact path="/kitchen" element={<KitchenPage />} />
-        <Route exact path="/admin" element={<AdminPage />} />
-        <Route exact path="/buyer" element={<BuyerPage />} />
+        <Route exact path="/cashier/*" element={<CashierPage />} />
+        <Route exact path="/kitchen/*" element={<KitchenPage />} />
+        <Route exact path="/admin/*" element={<AdminPage />} />
+        <Route exact path="/buyer/*" element={<BuyerPage />} />
       </Routes>
     </div>
   );
