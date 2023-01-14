@@ -4,7 +4,7 @@ import { Colors } from "../../Theme";
 
 export const Main = styled.div`
   background-color: ${Colors.white};
-  height: 100vh;
+  height: 37rem;
 `;
 
 export const OrderContainer = styled.div`
