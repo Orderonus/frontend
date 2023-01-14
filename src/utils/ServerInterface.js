@@ -1,10 +1,18 @@
-import { BACKEND_URL } from "./constants";
-import axios from "axios";
+const axios = require("axios");
+const BACKEND_URL = "http://172.31.47.170:8000";
 
 // Settings for this to work.
 axios.defaults.baseURL = BACKEND_URL;
 axios.defaults.withCredentials = true;
 axios.defaults.headers.post["Content-Type"] = "application/json";
+
+const instance = axios.create({
+  baseURL: BACKEND_URL,
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 /**
  * Generates an error message from the server response
@@ -28,12 +36,18 @@ const generateErrorMsg = (resp) => {
 export const Login = async (username, password) => {
   if (username.length === 0 || password.length === 0)
     return [false, "Username or password cannot be empty."];
-  const resp = await axios.post(`/account/login`, {
-    username: username,
-    password: password,
-  });
-  if (resp.status === 200) return [true, resp.data.data];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.post(
+      `/accounts/login/`,
+      JSON.stringify({
+        username: username,
+        password: password,
+      })
+    );
+    return [true, resp.data.data];
+  } catch (err) {
+    return [false, generateErrorMsg(err.response)];
+  }
 };
 
 /**
@@ -47,12 +61,18 @@ export const Login = async (username, password) => {
 export const Register = async (username, password) => {
   if (username.length === 0 || password.length === 0)
     return [false, "Username or password cannot be empty."];
-  const resp = await axios.post(`/account/register`, {
-    username: username,
-    password: password,
-  });
-  if (resp.status === 200) return [true, resp.data.data];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.post(
+      `/accounts/register/`,
+      JSON.stringify({
+        username: username,
+        password: password,
+      })
+    );
+    return [true, resp.data.data];
+  } catch (err) {
+    return [false, generateErrorMsg(err.response)];
+  }
 };
 
 /**
@@ -62,8 +82,12 @@ export const Register = async (username, password) => {
  * @returns {Promise<Boolean>}
  */
 export const CheckAlive = async () => {
-  const resp = await axios.get(`/`);
-  return resp.status === 200;
+  try {
+    const resp = await instance.get(`/`);
+    return true;
+  } catch (_) {
+    return false;
+  }
 };
 
 /**
@@ -75,9 +99,12 @@ export const CheckAlive = async () => {
  * @returns {Promise<Boolean, Store[]>}
  */
 export const GetStores = async () => {
-  const resp = await axios.get(`/stores`);
-  if (resp.status === 200) return [true, JSON.parse(resp.data.data)];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.get(`/api/stores/`);
+    return [true, JSON.parse(resp.data.data)];
+  } catch (err) {
+    return [false, generateErrorMsg(err.response)];
+  }
 };
 
 /**
@@ -89,12 +116,15 @@ export const GetStores = async () => {
  */
 export const AddStore = async (name, description) => {
   if (name.length === 0) return [false, "Name cannot be empty."];
-  const resp = await axios.post(`/stores/add`, {
-    name: name,
-    description: description,
-  });
-  if (resp.status === 200) return [true, resp.data.data];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.post(`/api/stores/add`, {
+      name: name,
+      description: description,
+    });
+    return [true, resp.data.data];
+  } catch (err) {
+    return [false, generateErrorMsg(err.response)];
+  }
 };
 
 /**
@@ -107,9 +137,12 @@ export const AddStore = async (name, description) => {
  */
 export const ViewOrdersFromStore = async (storeId) => {
   if (typeof storeId !== "number") return [false, "Invalid store ID."];
-  const resp = await axios.get(`/stores/${storeId}/orders`);
-  if (resp.status === 200) return [true, JSON.parse(resp.data.data)];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.get(`/api/stores/${storeId}/orders`);
+    return [true, JSON.parse(resp.data.data)];
+  } catch (err) {
+    return [false, generateErrorMsg(err.response)];
+  }
 };
 
 /**
@@ -122,9 +155,12 @@ export const ViewOrdersFromStore = async (storeId) => {
  */
 export const AddOrderToStore = async (storeId, data) => {
   if (typeof storeId !== "number") return [false, "Invalid store ID."];
-  const resp = await axios.post(`/stores/${storeId}/orders/add`, data);
-  if (resp.status === 200) return [true, resp.data.data];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.post(`/api/stores/${storeId}/orders/add`, data);
+    return [true, resp.data.data];
+  } catch (err) {
+    return [false, generateErrorMsg(err.response)];
+  }
 };
 
 /**
@@ -138,9 +174,12 @@ export const AddOrderToStore = async (storeId, data) => {
 export const ViewOrder = async (storeId, orderId) => {
   if (typeof storeId !== "number") return [false, "Invalid store ID."];
   if (typeof orderId !== "number") return [false, "Invalid order ID."];
-  const resp = await axios.get(`/stores/${storeId}/orders/${orderId}`);
-  if (resp.status === 200) return [true, JSON.parse(resp.data.data)];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.get(`/api/stores/${storeId}/orders/${orderId}`);
+    return [true, JSON.parse(resp.data.data)];
+  } catch (err) {
+    return [false, generateErrorMsg(resp)];
+  }
 };
 
 /**
@@ -156,14 +195,17 @@ export const CompleteOrder = async (storeId, orderId, status) => {
   if (typeof storeId !== "number") return [false, "Invalid store ID."];
   if (typeof orderId !== "number") return [false, "Invalid order ID."];
   if (typeof status !== "boolean") return [false, "Invalid status."];
-  const resp = await axios.post(
-    `/stores/${storeId}/orders/${orderId}/complete`,
-    {
-      is_completed: status,
-    }
-  );
-  if (resp.status === 200) return [true, resp.data.data];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.post(
+      `/api/stores/${storeId}/orders/${orderId}/complete`,
+      {
+        is_completed: status,
+      }
+    );
+    return [true, resp.data.data];
+  } catch (err) {
+    return [false, generateErrorMsg(err.response)];
+  }
 };
 
 /**
@@ -176,9 +218,12 @@ export const CompleteOrder = async (storeId, orderId, status) => {
  * @returns {Promise<Boolean, Dish[] | String>}
  */
 export const GetDishes = async (storeId) => {
-  const resp = await axios.get(`/stores/${storeId}/dishes`);
-  if (resp.status === 200) return [true, JSON.parse(resp.data.data)];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.get(`/api/stores/${storeId}/dishes/`);
+    return [true, JSON.parse(resp.data.data)];
+  } catch (err) {
+    return [false, generateErrorMsg(err.response)];
+  }
 };
 
 /**
@@ -194,12 +239,15 @@ export const EditDishAvailability = async (storeId, dishId, status) => {
   if (typeof storeId !== "number") return [false, "Invalid store ID."];
   if (typeof dishId !== "number") return [false, "Invalid dish ID."];
   if (typeof status !== "boolean") return [false, "Invalid status."];
-  const resp = await axios.post(
-    `/stores/${storeId}/dishes/${dishId}/available`,
-    {
-      is_available: status,
-    }
-  );
-  if (resp.status === 200) return [true, resp.data.data];
-  return [false, generateErrorMsg(resp)];
+  try {
+    const resp = await instance.post(
+      `/api/stores/${storeId}/dishes/${dishId}/available`,
+      {
+        is_available: status,
+      }
+    );
+    return [true, resp.data.data];
+  } catch (err) {
+    return [false, generateErrorMsg(err.response)];
+  }
 };
