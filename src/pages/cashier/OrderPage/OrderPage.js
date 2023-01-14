@@ -10,6 +10,8 @@ import {
   FoodImage,
   CheckboxItem,
   CounterContainer,
+  TopSectionContainer,
+  BtmSectionContainer,
 } from "./OrderPageElements";
 import { BtnSecondary } from "../../../AppComponents";
 import Form from "react-bootstrap/Form";
@@ -30,39 +32,42 @@ function OrderPage() {
     <ContentContainer>
       <OrangeContainer>
         <WhiteContainer>
-          <Box>
-            <Title>Ramen</Title>
-            <FoodImage />
-          </Box>
+          <TopSectionContainer>
+            <Box>
+              <Title>Ramen</Title>
+              <FoodImage />
+            </Box>
 
-          <Box>
-            <Title>Modifiers</Title>
-            <Form>
-              {Object.entries(modifiers).map(([key, value]) => (
-                <CheckboxItem>
-                  <Form.Check
-                    type={"checkbox"}
-                    id={key}
-                    label={`${key} ($${value.toFixed(2)})`}
-                  />
-                </CheckboxItem>
-              ))}
-            </Form>
-          </Box>
+            <Box>
+              <Title>Modifiers</Title>
+              <Form>
+                {Object.entries(modifiers).map(([key, value]) => (
+                  <CheckboxItem>
+                    <Form.Check
+                      type={"checkbox"}
+                      id={key}
+                      label={`${key} ($${value.toFixed(2)})`}
+                    />
+                  </CheckboxItem>
+                ))}
+              </Form>
+            </Box>
+          </TopSectionContainer>
+          <BtmSectionContainer>
+            <Box>
+              <Title>Quantity</Title>
+              <CounterContainer>
+                <img src={IncrementIcon} alt="Increment" />
+                {quantity}
+                <img src={DecrementIcon} alt="Decrement" />
+              </CounterContainer>
+            </Box>
 
-          <Box>
-            <Title>Quantity</Title>
-            <CounterContainer>
-              <img src={IncrementIcon} alt="Increment" />
-              {quantity}
-              <img src={DecrementIcon} alt="Decrement" />
-            </CounterContainer>
-          </Box>
-
-          <Box>
-            <Title>Comments</Title>
-            <Input />
-          </Box>
+            <Box>
+              <Title>Comments</Title>
+              <Input />
+            </Box>
+          </BtmSectionContainer>
         </WhiteContainer>
         <ButtonContainer>
           <BtnSecondary>Back</BtnSecondary>

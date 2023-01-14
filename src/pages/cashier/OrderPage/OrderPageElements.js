@@ -43,13 +43,18 @@ export const WhiteContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: ${Colors.white};
+  box-sizing: border-box;
+  flex-direction: column;
 `;
 
 export const Box = styled.div`
+  flex: 1;
   font-size: 1.2rem;
   font-weight: 400;
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  margin: 2rem;
 `;
 
 export const Title = styled.div`
@@ -80,7 +85,7 @@ export const Input = styled.input`
 `;
 
 export const FoodImage = styled.image`
-  background-image: url("http://172.31.47.170:8000/media/dishes/download.jfif");
+  background-image: url("https://i0.wp.com/seonkyounglongest.com/wp-content/uploads/2018/04/shoyu-ramen-1.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -88,11 +93,18 @@ export const FoodImage = styled.image`
   padding-top: 56.25%;
 `;
 
-//
-export const SectionContainer = styled.div`
+export const TopSectionContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  border: 3px solid red;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
+  flex: 3;
+`;
+
+export const BtmSectionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
   flex: 1;
 `;
