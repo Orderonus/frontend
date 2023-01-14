@@ -10,6 +10,7 @@ export const Main = styled.div`
 
 export const ContentContainer = styled.div`
   display: flex;
+  flex-direction: row;
   height: 100%;
 `;
 
