@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, useLocation, Route } from "react-router-dom";
 import { AdminMenuLink, AdminNav, Main } from "./AdminPageElements";
-import { StorePage } from "./store_info/StorePage";
+import { StorePage } from "./StorePage/StorePage";
 
 function AdminPage() {
   const location = useLocation();
