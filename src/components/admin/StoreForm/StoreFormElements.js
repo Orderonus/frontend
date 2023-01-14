@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../Theme";
+import { Colors } from "../../../Theme";
 
 export const StoreFormContainer = styled.form`
   width: 100%;

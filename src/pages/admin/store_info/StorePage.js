@@ -1,5 +1,5 @@
 import React from "react";
-import { StoreForm } from "../../../components/StoreForm/StoreForm";
+import { StoreForm } from "../../../components/admin/StoreForm/StoreForm";
 import {
   ContentContainer,
   StoreInfoHeader,
