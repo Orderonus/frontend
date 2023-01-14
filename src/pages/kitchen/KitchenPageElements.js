@@ -1,19 +1,23 @@
 import styled from "styled-components";
 import { Colors } from "../../Theme";
 
-
 export const Main = styled.div`
   background-color: ${Colors.white};
-  height: 37rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ContentContainer = styled.div`
+  display: flex;
+  height: 100%;
 `;
 
 export const OrderContainer = styled.div`
-  display: flex;
-  height: 85%;
+  height: 100%;
   width: min-content;
-  justify-content: space-around;
-  padding: 2rem;
-  overflow-x: auto;
+  display: grid;
+  overflow-x: scroll;
 `;
 
 export const OrderCard = styled.div`
@@ -22,4 +26,5 @@ export const OrderCard = styled.div`
   border-radius: 15px;
   padding: 1rem;
   margin: 1rem;
+  grid-row: 1;
 `;

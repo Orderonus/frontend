@@ -28,3 +28,10 @@ export const BtnSecondary = styled.button`
   padding: 0.2rem 2rem;
   font-size: 1.5rem;
 `;
+
+export const NavMenu = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;

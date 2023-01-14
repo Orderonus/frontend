@@ -12,10 +12,3 @@ export const ContentContainer = styled.div`
   display: flex;
   height: 100%;
 `;
-
-export const NavMenu = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
