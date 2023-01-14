@@ -15,7 +15,7 @@ export const StorePage = () => {
         <StoreInfoTitle>Store Information</StoreInfoTitle>
         <StoreInfoDesc>Please fill in details about your store.</StoreInfoDesc>
       </StoreInfoHeader>
-      {/* <StoreForm /> */}
+      <StoreForm />
     </ContentContainer>
   );
 };

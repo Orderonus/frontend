@@ -1,17 +1,27 @@
 import React from "react";
-import { FormInput, FormLabel, FormTextField } from "./FormElements";
+import {
+  FormContainer,
+  FormInput,
+  FormLabel,
+  FormSection,
+  FormTextField,
+} from "./FormElements";
 
 export const StoreForm = ({ action_url, method = "post" }) => {
   return (
-    <form method={method} action={action_url}>
-      <FormLabel>Name:</FormLabel>
-      <FormInput type="text" placeholder="Store name" />
-      <br />
-      <FormLabel>Image</FormLabel>
-      <FormInput type="file" accept="image/jpg, image/png" />
-      <br />
-      <FormLabel>Description</FormLabel>
-      <FormTextField placeholder="Description" />
-    </form>
+    <FormContainer method={method} action={action_url}>
+      <FormSection>
+        <FormLabel>Name:</FormLabel>
+        <FormInput type="text" placeholder="Store name" />
+      </FormSection>
+      <FormSection>
+        <FormLabel>Image/Icon:</FormLabel>
+        <FormInput type="file" accept="image/jpg, image/png" />
+      </FormSection>
+      <FormSection>
+        <FormLabel>Description:</FormLabel>
+        <FormTextField placeholder="Description" />
+      </FormSection>
+    </FormContainer>
   );
 };
