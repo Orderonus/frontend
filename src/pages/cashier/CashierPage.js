@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import { Main, NavMenu } from "./CashierPageElements";
+import { ContentContainer, Main, NavMenu } from "./CashierPageElements";
 import QueueIcon from "../../assets/Queue Icon.png";
+import SideBar from "../../components/SideBar/SideBar";
 
 function CashierPage() {
-  // states
   const [numOrdersPhysical, setNumOrdersPhysical] = useState(0);
   const [numOrdersOnline, setNumOrdersOnline] = useState(0);
 
@@ -18,7 +18,10 @@ function CashierPage() {
           </div>
         </NavMenu>
       </NavBar>
-      <div>CashierPage</div>
+
+      <ContentContainer>
+        <SideBar>Hi</SideBar>
+      </ContentContainer>
     </Main>
   );
 }
