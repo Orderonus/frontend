@@ -7,6 +7,7 @@ import {
   StoreInfoTitle,
   StoreInfoDesc,
 } from "./StorePageElements";
+import { BtnPrimary } from "../../../AppComponents";
 
 export const StorePage = () => {
   return (
@@ -16,6 +17,7 @@ export const StorePage = () => {
         <StoreInfoDesc>Please fill in details about your store.</StoreInfoDesc>
       </StoreInfoHeader>
       <StoreForm />
+      <BtnPrimary>Submit</BtnPrimary>
     </ContentContainer>
   );
 };
