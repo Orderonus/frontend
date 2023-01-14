@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import { Main, NavMenu } from "./KitchenPageElements";
+import { Main } from "./KitchenPageElements";
 import { MenuLink } from "../../components/NavBar/NavBarElements";
-import { OrderContainer, OrderCard } from "./KitchenPageElements";
+import { OrderContainer } from "./KitchenPageElements";
+import OrderCard from "./OrderCard/OrderCard";
 
 function KitchenPage() {
   return (
@@ -13,30 +14,17 @@ function KitchenPage() {
       </NavBar>
 
       <OrderContainer>
-          <OrderCard>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-          </OrderCard>
-          <OrderCard>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-          </OrderCard>
-          <OrderCard>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-          </OrderCard>
-          <OrderCard>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-          </OrderCard>
+        <OrderCard 
+          id={2321}
+          time={new Date()}
+          items={[{
+            "qty": 2,
+            "name": "Niku Udon",
+            "modifiers": ["Add noodles", "Less oil"],
+          }]} 
+          // append any comments to modifiers array
+        />
+        
       </OrderContainer>
     </Main>
   );
