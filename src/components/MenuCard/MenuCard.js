@@ -6,15 +6,15 @@ import {
   MenuCardDesc,
 } from "./MenuCardElements";
 
-function MenuCard({ name, imageUrl, price, description }) {
+function MenuCard({ name, imageUrl, price, description, isAvailable }) {
   return (
-    <MenuCardContainer>
+    <MenuCardContainer isAvailable={isAvailable}>
       <MenuCardImage />
       <MenuCardLabel>
         <div>{name}</div>
         <div>${price.toFixed(2)}</div>
       </MenuCardLabel>
-      <MenuCardDesc>{description}</MenuCardDesc>
+      <MenuCardDesc>{isAvailable ? description : "Out of Stock!"}</MenuCardDesc>
     </MenuCardContainer>
   );
 }

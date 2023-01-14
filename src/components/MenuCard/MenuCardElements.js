@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Colors } from "../../Theme";
 
 export const MenuCardContainer = styled.div`
-  background-color: ${Colors.primary};
+  background-color: ${(props) =>
+    props.isAvailable ? Colors.primary : Colors.grey};
   padding: 1rem;
   display: flex;
   flex-direction: column;

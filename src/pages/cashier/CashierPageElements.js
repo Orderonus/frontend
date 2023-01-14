@@ -22,7 +22,6 @@ export const NavMenu = styled.div`
 `;
 
 export const MenuCards = styled.div`
-  background: pink;
   width: 100%;
   max-width: 100%;
   height: auto;
