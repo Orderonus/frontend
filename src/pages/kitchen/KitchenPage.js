@@ -1,12 +1,46 @@
-import React from "react";
-import { BtnPrimary, BtnSecondary, BtnShort } from "../../AppComponents";
+import React, { useState } from "react";
+import NavBar from "../../components/NavBar/NavBar";
+import { Main, NavMenu } from "./KitchenPageElements";
+import { MenuLink } from "../../components/NavBar/NavBarElements";
+import { OrderContainer, OrderCard } from "./KitchenPageElements";
 
 function KitchenPage() {
-  return <div>
-    <h1>KitchenPage</h1>
-    <BtnPrimary>Submit</BtnPrimary>
-    <BtnSecondary>Done</BtnSecondary>
-    </div>;
+  return (
+    <Main>
+      <NavBar>
+        <MenuLink to="/kitchen/pending">Pending</MenuLink>
+        <MenuLink to="/kitchen/completed">Completed</MenuLink>
+      </NavBar>
+
+      <OrderContainer>
+          <OrderCard>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+          </OrderCard>
+          <OrderCard>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+          </OrderCard>
+          <OrderCard>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+          </OrderCard>
+          <OrderCard>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+          </OrderCard>
+      </OrderContainer>
+    </Main>
+  );
 }
 
 export default KitchenPage;
+
