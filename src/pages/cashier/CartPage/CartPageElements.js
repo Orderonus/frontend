@@ -72,6 +72,7 @@ export const ListBox = styled.div`
   overflow: hidden;
   overflow-y: scroll;
   display: flex;
+  margin: 1rem 0;
 `;
 
 export const ListColumn = styled.div`
@@ -79,8 +80,6 @@ export const ListColumn = styled.div`
   width: 100%;
   flex: ${(props) => props.flex};
 `;
-
-export const ListItem = styled.div``;
 
 export const SectionContainer = styled.div`
   display: flex;

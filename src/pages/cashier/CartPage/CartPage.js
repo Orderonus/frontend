@@ -9,23 +9,34 @@ import {
   SectionContainer,
   ListBox,
   ListColumn,
-  ListItem,
 } from "./CartPageElements";
 import { BtnSecondary } from "../../../AppComponents";
 
 function CartPage() {
-  const orders = {
-    "Ramen": {
+  const orders = [
+    {
+      "name": "Ramen",
       "price": 20,
       "quantity": 2,
       "modifiers": ["Add egg", "Add noodles"],
     },
-    "Fried Rice": {
+    {
+      "name": "Fried Rice",
       "price": 10,
       "quantity": 15,
       "modifiers": ["Less spicy"],
     },
-  };
+  ];
+
+  const subtotal = orders
+    .map((order) => order.price * order.quantity)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  const serviceCharge = subtotal * 0.1;
+
+  const gst = serviceCharge * 0.08;
+
+  const total = subtotal + serviceCharge + gst;
 
   return (
     <ContentContainer>
@@ -36,10 +47,12 @@ function CartPage() {
             {Object.entries(orders).map(([key, value]) => (
               <ListBox>
                 <ListColumn flex={3}>
-                  <div style={{ padding: "1rem 0" }}>
-                    {key}
+                  <div>
+                    {value.name}
                     <br />
-                    {"" + value.modifiers}
+                    {value.modifiers.map((modifier) => (
+                      <li>{modifier}</li>
+                    ))}
                   </div>
                 </ListColumn>
                 <ListColumn flex={1}>{`${value.quantity} pc`}</ListColumn>
@@ -49,10 +62,17 @@ function CartPage() {
           </SectionContainer>
           <SectionContainer flex={1}>
             <Title>Price Summary</Title>
-            <ListBox>
-              <ListColumn flex={3}>1</ListColumn>
-              <ListColumn flex={1}>1</ListColumn>
-            </ListBox>
+            {[
+              ["Subtotal", subtotal],
+              ["Service Charge", serviceCharge],
+              ["GST", gst],
+              ["Total", total],
+            ].map((item) => (
+              <ListBox>
+                <ListColumn flex={3}>{item[0]}</ListColumn>
+                <ListColumn flex={1}>{`$${item[1].toFixed(2)}`}</ListColumn>
+              </ListBox>
+            ))}
           </SectionContainer>
         </WhiteContainer>
         <ButtonContainer>
