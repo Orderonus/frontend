@@ -13,6 +13,7 @@ function AdminPage() {
         <AdminMenuLink to="staff">Staff</AdminMenuLink>
         <AdminMenuLink to="orders">Orders</AdminMenuLink>
       </AdminNav>
+
       <Routes>
         <Route path="/" element={<StorePage />} />
         <Route path="/dishes" element={"Dishes"} />
