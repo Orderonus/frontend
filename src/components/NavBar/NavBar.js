@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../assets/Logo.png";
 import {
   Nav,
@@ -10,8 +10,11 @@ import {
   MenuItem,
   MenuLink,
 } from "./NavBarElements";
+import ProfileDisplay from "../ProfileDisplay/ProfileDisplay";
 
 function NavBar(props) {
+  const [username, setUsername] = useState("Sarah Tan");
+  const [role, setRole] = useState("Cashier");
   return (
     <Nav>
       <NavbarContainer>
@@ -24,7 +27,9 @@ function NavBar(props) {
 
         <Menu>
           <MenuItem>
-            <MenuLink to="/profile">Profile</MenuLink>
+            <MenuLink to="/profile">
+              <ProfileDisplay />
+            </MenuLink>
           </MenuItem>
         </Menu>
       </NavbarContainer>

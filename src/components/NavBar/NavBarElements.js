@@ -68,7 +68,7 @@ export const MenuItem = styled.li`
 
 export const MenuLink = styled(Link)`
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.5rem;
   color: ${Colors.primary};
   display: flex;
