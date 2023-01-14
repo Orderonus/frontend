@@ -23,6 +23,7 @@ function KitchenPage() {
             "modifiers": ["Add noodles", "Less oil"],
           }]} 
           // append any comments to modifiers array
+          type={"Open"}
         />
         
       </OrderContainer>
