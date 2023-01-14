@@ -1,6 +1,5 @@
 import React from "react";
-import { AlertBox } from "../../../components/AlertBox/AlertBox";
-import { StoreForm } from "../../../components/Form/Form";
+import { StoreForm } from "../../../components/StoreForm/StoreForm";
 import {
   ContentContainer,
   StoreInfoHeader,
