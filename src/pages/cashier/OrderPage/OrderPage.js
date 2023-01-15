@@ -7,7 +7,6 @@ import {
   WhiteContainer,
   Title,
   Input,
-  FoodImage,
   CheckboxItem,
   CounterContainer,
   TopSectionContainer,
@@ -17,14 +16,20 @@ import { BtnSecondary } from "../../../AppComponents";
 import Form from "react-bootstrap/Form";
 import IncrementIcon from "../../../assets/Increment.png";
 import DecrementIcon from "../../../assets/Decrement.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
-function OrderPage() {
-  const modifiers = {
-    "Add egg": 0.5,
-    "Add noodles": 1,
-    "Add meat": 1,
-    "Less spicy": 0,
-  };
+export const ModifierLookup = new Map([
+  [1, { id: 1, description: "Add egg", price: 0.5 }],
+  [2, { id: 2, description: "Add noodles", price: 1 }],
+  [3, { id: 3, description: "Add meat", price: 1 }],
+  [4, { id: 4, description: "Add spicy", price: 0 }],
+]);
+
+function OrderPage({ add_order }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [modifiers, setModifiers] = useState([]);
 
   const [quantity, setQuantity] = useState(0);
 
@@ -34,25 +39,63 @@ function OrderPage() {
     setComment(event.target.value);
   };
 
+  const handleModifierChange = (event) => {
+    const id = event.target.value;
+    if (event.target.checked) {
+      setModifiers((modifiers) => [...modifiers, id]);
+    } else {
+      setModifiers(modifiers.filter((item) => item.id !== id));
+    }
+  };
+
+  const incrementCounter = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decrementCounter = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const submitForm = () => {
+    add_order(location.state.id, modifiers, quantity, comment);
+    navigate("/cashier/");
+  };
+
   return (
     <ContentContainer>
       <OrangeContainer>
         <WhiteContainer>
           <TopSectionContainer>
             <Box>
-              <Title>Ramen</Title>
-              <FoodImage />
+              <Title>{location.state.name}</Title>
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "15px",
+                  overflow: "hidden",
+                }}
+              >
+                <img
+                  src={location.state.imageUrl}
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </div>
             </Box>
 
             <Box>
               <Title>Modifiers</Title>
               <Form>
-                {Object.entries(modifiers).map(([key, value]) => (
-                  <CheckboxItem>
+                {Array.from(ModifierLookup.values()).map((item) => (
+                  <CheckboxItem key={item.id}>
                     <Form.Check
                       type={"checkbox"}
-                      id={key}
-                      label={`${key} ($${value.toFixed(2)})`}
+                      id={item.id}
+                      value={item.id}
+                      label={`${item.description} ($${item.price.toFixed(2)})`}
+                      onChange={handleModifierChange}
                     />
                   </CheckboxItem>
                 ))}
@@ -63,9 +106,19 @@ function OrderPage() {
             <Box>
               <Title>Quantity</Title>
               <CounterContainer>
-                <img src={IncrementIcon} alt="Increment" />
+                <button
+                  style={{ border: "none", background: "none" }}
+                  onClick={decrementCounter}
+                >
+                  <img src={DecrementIcon} alt="Decrement" />
+                </button>
                 {quantity}
-                <img src={DecrementIcon} alt="Decrement" />
+                <button
+                  style={{ border: "none", background: "none" }}
+                  onClick={incrementCounter}
+                >
+                  <img src={IncrementIcon} alt="Increment" />
+                </button>
               </CounterContainer>
             </Box>
 
@@ -77,7 +130,7 @@ function OrderPage() {
         </WhiteContainer>
         <ButtonContainer>
           <BtnSecondary>Back</BtnSecondary>
-          <BtnSecondary>Add</BtnSecondary>
+          <BtnSecondary onClick={submitForm}>Add</BtnSecondary>
         </ButtonContainer>
       </OrangeContainer>
     </ContentContainer>

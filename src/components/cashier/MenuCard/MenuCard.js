@@ -1,21 +1,41 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
-  MenuCardContainer,
+  MenuCardButton,
   MenuCardLabel,
   MenuCardImage,
   MenuCardDesc,
 } from "./MenuCardElements";
 
-function MenuCard({ name, imageUrl, price, description, isAvailable }) {
+function MenuCard(props) {
+  const navigate = useNavigate();
+
+  function selectCard() {
+    navigate(`/cashier/order/${props.id}`, {
+      state: props,
+    });
+  }
+
   return (
-    <MenuCardContainer isAvailable={isAvailable}>
-      <MenuCardImage />
+    <MenuCardButton isAvailable={props.isAvailable} onClick={selectCard}>
+      <div
+        style={{
+          width: "100%",
+          height: "10rem",
+          borderRadius: "15px",
+          overflow: "hidden",
+        }}
+      >
+        <img src={props.imageUrl} style={{ width: "100%", height: "100%" }} />
+      </div>
       <MenuCardLabel>
-        <div>{name}</div>
-        <div>${price.toFixed(2)}</div>
+        <div>{props.name}</div>
+        <div>${props.price.toFixed(2)}</div>
       </MenuCardLabel>
-      <MenuCardDesc>{isAvailable ? description : "Out of Stock!"}</MenuCardDesc>
-    </MenuCardContainer>
+      <MenuCardDesc>
+        {props.isAvailable ? props.description : "Out of Stock!"}
+      </MenuCardDesc>
+    </MenuCardButton>
   );
 }
 

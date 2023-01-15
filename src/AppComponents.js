@@ -15,7 +15,7 @@ export const BtnPrimary = styled.button`
   min-width: 6rem;
   height: auto;
   padding: 0.2rem 2rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
 `;
 
 export const BtnSecondary = styled.button`
@@ -26,5 +26,5 @@ export const BtnSecondary = styled.button`
   min-width: 6rem;
   height: auto;
   padding: 0.2rem 2rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
 `;

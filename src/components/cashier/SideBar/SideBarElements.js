@@ -12,28 +12,29 @@ export const BtnGroup = styled.div`
   display: flex;
   flex-direction: column;
   height: 85%;
-`
+`;
 
 export const RegBtnContainer = styled.div`
   height: 15%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: ${Colors.grey}
-  `
+  background-color: ${Colors.grey};
+`;
 
 export const RegBtnContainerSelected = styled.div`
   height: 15%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: ${Colors.secondary}
-`
+  background-color: ${Colors.secondary};
+`;
 
-export const CartBtnContainer = styled.div`
+export const CartButton = styled.button`
   height: 15%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: ${Colors.primary}
-  `
+  background-color: ${Colors.primary};
+`;
