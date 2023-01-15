@@ -11,7 +11,7 @@ function OrderCard({id, datetime, items, open}) {
             #{id}
           </HeaderText>
           <HeaderText>
-            {datetime.getHours()}:{datetime.getMinutes()}
+            {datetime.getHours()}:{datetime.getMinutes().toString().padStart(2, '0')}
           </HeaderText>
         </CardHeaderDiv>
 
