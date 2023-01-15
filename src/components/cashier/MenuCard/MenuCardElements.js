@@ -1,19 +1,20 @@
 import styled from "styled-components";
 import { Colors } from "../../../Theme";
 
-export const MenuCardContainer = styled.div`
+export const MenuCardButton = styled.button`
+  border: none;
   background-color: ${(props) =>
     props.isAvailable ? Colors.primary : Colors.grey};
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 15px;
+  height: 20rem;
 `;
 
 export const MenuCardImage = styled.image`
-  background-image: url("https://i0.wp.com/seonkyounglongest.com/wp-content/uploads/2018/04/shoyu-ramen-1.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -22,7 +23,7 @@ export const MenuCardImage = styled.image`
 `;
 
 export const MenuCardLabel = styled.div`
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 0.5rem 0;
   display: flex;
@@ -32,6 +33,6 @@ export const MenuCardLabel = styled.div`
 `;
 
 export const MenuCardDesc = styled.div`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: ${Colors.white};
 `;

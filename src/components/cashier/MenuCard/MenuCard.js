@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  MenuCardContainer,
+  MenuCardButton,
   MenuCardLabel,
   MenuCardImage,
   MenuCardDesc,
@@ -8,14 +8,23 @@ import {
 
 function MenuCard({ name, imageUrl, price, description, isAvailable }) {
   return (
-    <MenuCardContainer isAvailable={isAvailable}>
-      <MenuCardImage />
+    <MenuCardButton isAvailable={isAvailable}>
+      <div
+        style={{
+          width: "100%",
+          height: "10rem",
+          borderRadius: "15px",
+          overflow: "hidden",
+        }}
+      >
+        <img src={imageUrl} style={{ width: "100%", height: "100%" }} />
+      </div>
       <MenuCardLabel>
         <div>{name}</div>
         <div>${price.toFixed(2)}</div>
       </MenuCardLabel>
       <MenuCardDesc>{isAvailable ? description : "Out of Stock!"}</MenuCardDesc>
-    </MenuCardContainer>
+    </MenuCardButton>
   );
 }
 
