@@ -1,12 +1,30 @@
 import React from "react";
-import { BtnPrimary, BtnSecondary, BtnShort } from "../../AppComponents";
+import { Routes, Route } from "react-router-dom";
+import NavBar from "../../components/shared/NavBar/NavBar";
+import {
+  MenuLink,
+  TabMenuLink,
+} from "../../components/shared/NavBar/NavBarElements";
+import { ContentContainer, Main } from "./KitchenPageElements";
+import PendingPage from "./PendingPage/PendingPage";
+import CompletedPage from "./CompletedPage/CompletedPage";
 
 function KitchenPage() {
-  return <div>
-    <h1>KitchenPage</h1>
-    <BtnPrimary>Submit</BtnPrimary>
-    <BtnSecondary>Done</BtnSecondary>
-    </div>;
+  return (
+    <Main>
+      <NavBar>
+        <TabMenuLink to="/kitchen">Pending</TabMenuLink>
+        <TabMenuLink to="/kitchen/completed">Completed</TabMenuLink>
+      </NavBar>
+
+      <ContentContainer>
+        <Routes>
+          <Route path="/" element={<PendingPage />} />
+          <Route path="/completed" element={<CompletedPage />} />
+        </Routes>
+      </ContentContainer>
+    </Main>
+  );
 }
 
 export default KitchenPage;

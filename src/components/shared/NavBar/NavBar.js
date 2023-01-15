@@ -5,7 +5,6 @@ import {
   NavbarContainer,
   NavLogo,
   NavIcon,
-  MenuIcon,
   Menu,
   MenuItem,
   MenuLink,
@@ -24,7 +23,7 @@ function NavBar(props) {
             <img src={Logo} alt="Logo" width={150} />
           </NavIcon>
         </NavLogo>
-        <MenuIcon>{props.children}</MenuIcon>
+        <div>{props.children}</div>
 
         <Menu>
           <MenuItem>
