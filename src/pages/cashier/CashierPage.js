@@ -17,6 +17,7 @@ import { Roles } from "../../utils/Enums";
 function CashierPage() {
   const [numOrdersPhysical, setNumOrdersPhysical] = useState(0);
   const [numOrdersOnline, setNumOrdersOnline] = useState(0);
+  const [numCartItems, setNumCartItems] = useState(0);
 
   return (
     <Main>
@@ -31,7 +32,7 @@ function CashierPage() {
       </NavBar>
 
       <ContentContainer>
-        <SideBar></SideBar>
+        <SideBar cartNumber={numCartItems} />
         <PageContainer>
           <Routes>
             <Route path="/" element={<MenuPage />} />
