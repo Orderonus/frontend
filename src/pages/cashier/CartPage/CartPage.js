@@ -12,25 +12,25 @@ import {
   ScrollContainer,
 } from "./CartPageElements";
 import { BtnSecondary } from "../../../AppComponents";
+import { ModifierLookup } from "../OrderPage/OrderPage";
+import { MenuLookup } from "../MenuPage/MenuPage";
 
-function CartPage() {
-  const orders = [
-    {
-      "name": "Ramen",
-      "price": 20,
-      "quantity": 2,
-      "modifiers": ["Add egg", "Add noodles"],
-    },
-    {
-      "name": "Fried Rice",
-      "price": 10,
-      "quantity": 15,
-      "modifiers": ["Less spicy"],
-    },
-  ];
-
+function CartPage({ orders }) {
   const subtotal = orders
-    .map((order) => order.price * order.quantity)
+    .map((order) => {
+      const dish = MenuLookup.get(order.id);
+      const base_price = dish.price;
+      const addon_price = order.modifiers
+        .map((mod) => ModifierLookup.get(parseInt(mod)).price)
+        .reduce((acc, curr) => acc + curr, 0);
+      console.log(
+        base_price,
+        typeof base_price,
+        addon_price,
+        typeof addon_price
+      );
+      return (base_price + addon_price) * order.quantity;
+    })
     .reduce((acc, curr) => acc + curr, 0);
 
   const serviceCharge = subtotal * 0.1;
@@ -46,23 +46,40 @@ function CartPage() {
           <SectionContainer flex={3}>
             <Title>Order Summary</Title>
             <ScrollContainer>
-              {Object.entries(orders).map(([key, value]) => (
-                <ListBox>
-                  <ListColumn flex={3}>
-                    <div>
-                      {value.name}
-                      <br />
-                      {value.modifiers.map((modifier) => (
-                        <li>{modifier}</li>
-                      ))}
-                    </div>
-                  </ListColumn>
-                  <ListColumn flex={1}>{`${value.quantity} pc`}</ListColumn>
-                  <ListColumn flex={1}>{`$${value.price.toFixed(
-                    2
-                  )}`}</ListColumn>
-                </ListBox>
-              ))}
+              {orders.map(({ id, modifiers, quantity, other_comments }) => {
+                const menuItem = MenuLookup.get(id);
+                return (
+                  <ListBox>
+                    <ListColumn flex={3}>
+                      <div>
+                        {menuItem.name}
+                        <br />
+                        {modifiers.map((mod) => {
+                          const modifier = ModifierLookup.get(parseInt(mod));
+                          return (
+                            <li>
+                              {modifier.description}
+                              {` \$(${modifier.price.toFixed(2)})`}
+                            </li>
+                          );
+                        })}
+                        {other_comments.length > 0 ? (
+                          <li>{other_comments}</li>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    </ListColumn>
+                    <ListColumn flex={1}>{`${quantity} pc`}</ListColumn>
+                    <ListColumn flex={1}>{`$${(
+                      menuItem.price +
+                      modifiers
+                        .map((mod) => ModifierLookup.get(parseInt(mod)).price)
+                        .reduce((acc, curr) => acc + curr, 0)
+                    ).toFixed(2)}`}</ListColumn>
+                  </ListBox>
+                );
+              })}
             </ScrollContainer>
           </SectionContainer>
           <SectionContainer flex={2}>

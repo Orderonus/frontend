@@ -7,7 +7,6 @@ import {
   WhiteContainer,
   Title,
   Input,
-  FoodImage,
   CheckboxItem,
   CounterContainer,
   TopSectionContainer,
@@ -19,16 +18,16 @@ import IncrementIcon from "../../../assets/Increment.png";
 import DecrementIcon from "../../../assets/Decrement.png";
 import { useLocation, useNavigate } from "react-router-dom";
 
-function OrderPage() {
+export const ModifierLookup = new Map([
+  [1, { id: 1, description: "Add egg", price: 0.5 }],
+  [2, { id: 2, description: "Add noodles", price: 1 }],
+  [3, { id: 3, description: "Add meat", price: 1 }],
+  [4, { id: 4, description: "Add spicy", price: 0 }],
+]);
+
+function OrderPage({ add_order }) {
   const navigate = useNavigate();
   const location = useLocation();
-
-  const data = [
-    { id: 1, description: "Add egg", price: 0.5 },
-    { id: 2, description: "Add noodles", price: 1 },
-    { id: 3, description: "Add meat", price: 1 },
-    { id: 4, description: "Add spicy", price: 0 },
-  ];
 
   const [modifiers, setModifiers] = useState([]);
 
@@ -60,10 +59,7 @@ function OrderPage() {
   };
 
   const submitForm = () => {
-    console.log(`Quantity: ${quantity}`);
-    console.log(`Modifiers: ${modifiers}`);
-    console.log(`Comments: ${comment}`);
-
+    add_order(location.state.id, modifiers, quantity, comment);
     navigate("/cashier/");
   };
 
@@ -92,7 +88,7 @@ function OrderPage() {
             <Box>
               <Title>Modifiers</Title>
               <Form>
-                {data.map((item) => (
+                {Array.from(ModifierLookup.values()).map((item) => (
                   <CheckboxItem key={item.id}>
                     <Form.Check
                       type={"checkbox"}

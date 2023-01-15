@@ -2,8 +2,9 @@ import React from "react";
 import MenuCard from "../../../components/cashier/MenuCard/MenuCard";
 import { ContentContainer, MenuCards } from "./MenuPageElements";
 
-function MenuPage() {
-  const menu = [
+export const MenuLookup = new Map([
+  [
+    1,
     {
       id: 1,
       name: "Ramen",
@@ -13,6 +14,9 @@ function MenuPage() {
       description: "Delicious noodles with aromatic broth",
       isAvailable: true,
     },
+  ],
+  [
+    2,
     {
       id: 2,
       name: "Fried Rice",
@@ -22,6 +26,9 @@ function MenuPage() {
       description: "Uncle Roger's egg fried rice",
       isAvailable: true,
     },
+  ],
+  [
+    3,
     {
       id: 3,
       name: "Pasta",
@@ -31,12 +38,14 @@ function MenuPage() {
       description: "Impasta",
       isAvailable: true,
     },
-  ];
+  ],
+]);
 
+function MenuPage() {
   return (
     <ContentContainer>
       <MenuCards>
-        {menu.map((item) => (
+        {Array.from(MenuLookup.values()).map((item) => (
           <MenuCard
             key={item.id}
             id={item.id}

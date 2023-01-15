@@ -17,8 +17,19 @@ import { Roles } from "../../utils/Enums";
 function CashierPage() {
   const [numOrdersPhysical, setNumOrdersPhysical] = useState(0);
   const [numOrdersOnline, setNumOrdersOnline] = useState(0);
-  const [numCartItems, setNumCartItems] = useState(0);
+  const [orders, setOrders] = useState([]);
 
+  const add_orders = (id, modifiers, quantity, other_comments = "") => {
+    setOrders([
+      ...orders,
+      {
+        id: id,
+        modifiers: modifiers,
+        quantity: quantity,
+        other_comments,
+      },
+    ]);
+  };
   return (
     <Main>
       <NavBar role={Roles.Cashier}>
@@ -32,12 +43,15 @@ function CashierPage() {
       </NavBar>
 
       <ContentContainer>
-        <SideBar cartNumber={numCartItems} />
+        <SideBar cartNumber={orders.length} />
         <PageContainer>
           <Routes>
             <Route path="/" element={<MenuPage />} />
-            <Route path="/order/*" element={<OrderPage />} />
-            <Route path="/cart" element={<CartPage />} />
+            <Route
+              path="/order/*"
+              element={<OrderPage add_order={add_orders} />}
+            />
+            <Route path="/cart" element={<CartPage orders={orders} />} />
           </Routes>
         </PageContainer>
       </ContentContainer>
