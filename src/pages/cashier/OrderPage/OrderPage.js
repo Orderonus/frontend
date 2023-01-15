@@ -17,8 +17,11 @@ import { BtnSecondary } from "../../../AppComponents";
 import Form from "react-bootstrap/Form";
 import IncrementIcon from "../../../assets/Increment.png";
 import DecrementIcon from "../../../assets/Decrement.png";
+import { useLocation } from "react-router-dom";
 
 function OrderPage() {
+  const location = useLocation();
+
   const modifiers = {
     "Add egg": 0.5,
     "Add noodles": 1,
@@ -40,8 +43,20 @@ function OrderPage() {
         <WhiteContainer>
           <TopSectionContainer>
             <Box>
-              <Title>Ramen</Title>
-              <FoodImage />
+              <Title>{location.state.name}</Title>
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "15px",
+                  overflow: "hidden",
+                }}
+              >
+                <img
+                  src={location.state.imageUrl}
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </div>
             </Box>
 
             <Box>

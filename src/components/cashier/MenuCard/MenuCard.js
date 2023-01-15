@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   MenuCardButton,
   MenuCardLabel,
@@ -6,9 +7,18 @@ import {
   MenuCardDesc,
 } from "./MenuCardElements";
 
-function MenuCard({ name, imageUrl, price, description, isAvailable }) {
+function MenuCard(props) {
+  const navigate = useNavigate();
+
+  function selectCard() {
+    console.log("Select " + props.id);
+    navigate(`/cashier/order/${props.id}`, {
+      state: props,
+    });
+  }
+
   return (
-    <MenuCardButton isAvailable={isAvailable}>
+    <MenuCardButton isAvailable={props.isAvailable} onClick={selectCard}>
       <div
         style={{
           width: "100%",
@@ -17,13 +27,15 @@ function MenuCard({ name, imageUrl, price, description, isAvailable }) {
           overflow: "hidden",
         }}
       >
-        <img src={imageUrl} style={{ width: "100%", height: "100%" }} />
+        <img src={props.imageUrl} style={{ width: "100%", height: "100%" }} />
       </div>
       <MenuCardLabel>
-        <div>{name}</div>
-        <div>${price.toFixed(2)}</div>
+        <div>{props.name}</div>
+        <div>${props.price.toFixed(2)}</div>
       </MenuCardLabel>
-      <MenuCardDesc>{isAvailable ? description : "Out of Stock!"}</MenuCardDesc>
+      <MenuCardDesc>
+        {props.isAvailable ? props.description : "Out of Stock!"}
+      </MenuCardDesc>
     </MenuCardButton>
   );
 }
