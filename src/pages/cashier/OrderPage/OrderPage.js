@@ -59,8 +59,10 @@ function OrderPage({ add_order }) {
   };
 
   const submitForm = () => {
-    add_order(location.state.id, modifiers, quantity, comment);
-    navigate("/cashier/");
+    if (quantity > 0) {
+      add_order(location.state.id, modifiers, quantity, comment);
+      navigate("/cashier/");
+    }
   };
 
   return (

@@ -99,7 +99,7 @@ function CartPage({ orders }) {
         </WhiteContainer>
         <ButtonContainer>
           <BtnSecondary>Back</BtnSecondary>
-          <BtnSecondary>Add</BtnSecondary>
+          <BtnSecondary>Submit</BtnSecondary>
         </ButtonContainer>
       </OrangeContainer>
     </ContentContainer>
