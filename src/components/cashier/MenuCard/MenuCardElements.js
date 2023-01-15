@@ -8,7 +8,6 @@ export const MenuCardButton = styled.button`
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
   border-radius: 15px;
   height: 20rem;
@@ -35,4 +34,5 @@ export const MenuCardLabel = styled.div`
 export const MenuCardDesc = styled.div`
   font-size: 1.5rem;
   color: ${Colors.white};
+  text-align: left;
 `;

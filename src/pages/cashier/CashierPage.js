@@ -35,7 +35,7 @@ function CashierPage() {
         <PageContainer>
           <Routes>
             <Route path="/" element={<MenuPage />} />
-            <Route path="/order" element={<OrderPage />} />
+            <Route path="/order/*" element={<OrderPage />} />
             <Route path="/cart" element={<CartPage />} />
           </Routes>
         </PageContainer>
