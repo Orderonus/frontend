@@ -8,11 +8,12 @@ import {
 import { ContentContainer, Main } from "./KitchenPageElements";
 import PendingPage from "./PendingPage/PendingPage";
 import CompletedPage from "./CompletedPage/CompletedPage";
+import { Roles } from "../../utils/Enums";
 
 function KitchenPage() {
   return (
     <Main>
-      <NavBar>
+      <NavBar role={Roles.Kitchen}>
         <TabMenuLink to="/kitchen">Pending</TabMenuLink>
         <TabMenuLink to="/kitchen/completed">Completed</TabMenuLink>
       </NavBar>

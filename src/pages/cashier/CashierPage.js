@@ -12,6 +12,7 @@ import {
   PageContainer,
 } from "./CashierPageElements";
 import QueueIcon from "../../assets/Queue Icon.png";
+import { Roles } from "../../utils/Enums";
 
 function CashierPage() {
   const [numOrdersPhysical, setNumOrdersPhysical] = useState(0);
@@ -19,7 +20,7 @@ function CashierPage() {
 
   return (
     <Main>
-      <NavBar>
+      <NavBar role={Roles.Cashier}>
         <NavMenu>
           <img src={QueueIcon} alt="Queue" width={35} />
           <div>
