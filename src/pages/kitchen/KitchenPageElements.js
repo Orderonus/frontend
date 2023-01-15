@@ -12,6 +12,7 @@ export const Main = styled.div`
 export const ContentContainer = styled.div`
   height: 100%;
   width: 100%;
+  overflow-x: auto;
 `;
 
 export const OrderContainer = styled.div`
