@@ -5,17 +5,15 @@ import {
   NavbarContainer,
   NavLogo,
   NavIcon,
-  MenuIcon,
   Menu,
   MenuItem,
   MenuLink,
 } from "./NavBarElements";
 import ProfileDisplay from "../ProfileDisplay/ProfileDisplay";
-import { Roles } from "../../../utils/Enums";
 
 function NavBar(props) {
   const [username, setUsername] = useState("Sarah Tan");
-  const [role, setRole] = useState(Roles.Cashier);
+  const [role, setRole] = useState(props.role);
   return (
     <Nav>
       <NavbarContainer>
@@ -24,7 +22,7 @@ function NavBar(props) {
             <img src={Logo} alt="Logo" width={150} />
           </NavIcon>
         </NavLogo>
-        <MenuIcon>{props.children}</MenuIcon>
+        <div>{props.children}</div>
 
         <Menu>
           <MenuItem>

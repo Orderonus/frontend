@@ -1,18 +1,21 @@
 import React from "react";
 import { Routes, useLocation, Route } from "react-router-dom";
-import { AdminMenuLink, AdminNav, Main } from "./AdminPageElements";
+import { Main } from "./AdminPageElements";
 import { StorePage } from "./StorePage/StorePage";
+import NavBar from "../../components/shared/NavBar/NavBar";
+import { TabMenuLink } from "../../components/shared/NavBar/NavBarElements";
+import { Roles } from "../../utils/Enums";
 
 function AdminPage() {
   const location = useLocation();
   return (
     <Main>
-      <AdminNav>
-        <AdminMenuLink to="">Store Info</AdminMenuLink>
-        <AdminMenuLink to="dishes">Dishes</AdminMenuLink>
-        <AdminMenuLink to="staff">Staff</AdminMenuLink>
-        <AdminMenuLink to="orders">Orders</AdminMenuLink>
-      </AdminNav>
+      <NavBar role={Roles.Admin}>
+        <TabMenuLink to="">Store Info</TabMenuLink>
+        <TabMenuLink to="dishes">Dishes</TabMenuLink>
+        <TabMenuLink to="staff">Staff</TabMenuLink>
+        <TabMenuLink to="orders">Orders</TabMenuLink>
+      </NavBar>
 
       <Routes>
         <Route path="/" element={<StorePage />} />

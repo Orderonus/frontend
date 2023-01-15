@@ -4,6 +4,7 @@ import NavBar from "../../components/shared/NavBar/NavBar";
 import SideBar from "../../components/cashier/SideBar/SideBar";
 import MenuPage from "./MenuPage/MenuPage";
 import OrderPage from "./OrderPage/OrderPage";
+import CartPage from "./CartPage/CartPage";
 import {
   ContentContainer,
   Main,
@@ -11,6 +12,7 @@ import {
   PageContainer,
 } from "./CashierPageElements";
 import QueueIcon from "../../assets/Queue Icon.png";
+import { Roles } from "../../utils/Enums";
 
 function CashierPage() {
   const [numOrdersPhysical, setNumOrdersPhysical] = useState(0);
@@ -18,7 +20,7 @@ function CashierPage() {
 
   return (
     <Main>
-      <NavBar>
+      <NavBar role={Roles.Cashier}>
         <NavMenu>
           <img src={QueueIcon} alt="Queue" width={35} />
           <div>
@@ -34,6 +36,7 @@ function CashierPage() {
           <Routes>
             <Route path="/" element={<MenuPage />} />
             <Route path="/order" element={<OrderPage />} />
+            <Route path="/cart" element={<CartPage />} />
           </Routes>
         </PageContainer>
       </ContentContainer>
