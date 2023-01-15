@@ -11,7 +11,6 @@ function MenuCard(props) {
   const navigate = useNavigate();
 
   function selectCard() {
-    console.log("Select " + props.id);
     navigate(`/cashier/order/${props.id}`, {
       state: props,
     });

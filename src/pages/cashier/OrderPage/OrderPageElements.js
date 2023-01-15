@@ -49,7 +49,7 @@ export const WhiteContainer = styled.div`
 
 export const Box = styled.div`
   flex: 1;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 400;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ export const Box = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
 `;
@@ -78,7 +78,7 @@ export const Input = styled.input`
   background: ${Colors.white};
   border-radius: 15px;
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   padding: 0.5rem;
   width: 100%;
   box-sizing: border-box;
