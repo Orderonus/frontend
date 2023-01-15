@@ -1,30 +1,27 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "../../components/shared/NavBar/NavBar";
 import { MenuLink } from "../../components/shared/NavBar/NavBarElements";
-import { Main, OrderContainer, TogglerDiv } from "./KitchenPageElements";
-import OrderCard from "./OrderCard/OrderCard";
+import { ContentContainer, Main } from "./KitchenPageElements";
+import PendingPage from "./PendingPage/PendingPage";
+import CompletedPage from "./CompletedPage/CompletedPage";
 
 function KitchenPage() {
   return (
     <Main>
       <NavBar>
-        <TogglerDiv>
-          <MenuLink>Pending</MenuLink>
-          <MenuLink>Completed</MenuLink>
-        </TogglerDiv>
+        <MenuLink to="/kitchen">Pending</MenuLink>
+        <MenuLink to="/kitchen/completed">Completed</MenuLink>
       </NavBar>
 
-      <OrderContainer>
-        <OrderCard 
-          open={false} 
-          id={2321} 
-          datetime={new Date()} 
-          items={[
-            {"qty": 1, "name": "Shoyu Ramen", "modifiers":["Less sugar"]
-          }]} />
-      </OrderContainer>
+      <ContentContainer>
+        <Routes>
+          <Route path="/" element={<PendingPage />} />
+          <Route path="/completed" element={<CompletedPage />} />
+        </Routes>
+      </ContentContainer>
     </Main>
-  )
+  );
 }
 
 export default KitchenPage;

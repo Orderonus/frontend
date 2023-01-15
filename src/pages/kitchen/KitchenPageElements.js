@@ -9,13 +9,9 @@ export const Main = styled.div`
   flex-direction: column;
 `;
 
-export const TogglerDiv = styled.div`
-  background-color: ${Colors.white};
-  display: flex;
-  border: 1.5px solid;
-  border-color: ${Colors.primary};
-  padding: 0.5rem;
-  border-radius: 10px;
+export const ContentContainer = styled.div`
+  height: 100%;
+  width: 100%;
 `;
 
 export const OrderContainer = styled.div`
@@ -25,4 +21,4 @@ export const OrderContainer = styled.div`
   width: min-content;
   justify-content: space-around;
   align-items: center;
-`
+`;
