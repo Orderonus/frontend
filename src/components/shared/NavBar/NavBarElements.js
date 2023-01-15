@@ -51,10 +51,6 @@ export const NavIcon = styled.image`
   }
 `;
 
-export const MenuIcon = styled.div`
-  /* display: none; */
-`;
-
 export const Menu = styled.ul`
   display: flex;
   align-items: center;
@@ -80,5 +76,14 @@ export const MenuLink = styled(Link)`
 
   &:hover {
     filter: brightness(80%);
+  }
+`;
+
+export const TabMenuLink = styled(MenuLink)`
+  color: ${Colors.black};
+  display: inline-block;
+  padding: 1rem;
+  &:focus {
+    color: ${Colors.primary};
   }
 `;
