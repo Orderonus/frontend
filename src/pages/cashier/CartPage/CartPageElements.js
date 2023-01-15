@@ -37,74 +37,51 @@ export const ButtonContainer = styled.div`
 export const WhiteContainer = styled.div`
   display: flex;
   height: 100%;
-  max-height: 100%;
+  max-height: 90%;
   width: 100%;
   border-radius: 15px;
   align-items: center;
   justify-content: center;
   background: ${Colors.white};
   box-sizing: border-box;
-  flex-direction: column;
-`;
-
-export const Box = styled.div`
-  flex: 1;
-  font-size: 1.2rem;
-  font-weight: 400;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  margin: 2rem;
+  flex-direction: row;
 `;
 
 export const Title = styled.div`
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
 `;
 
-export const CheckboxItem = styled.div`
-  margin: 1rem 0;
-`;
-
-export const CounterContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const Input = styled.input`
-  border: 3px solid ${Colors.primary};
-  background: ${Colors.white};
-  border-radius: 15px;
-  display: block;
-  font-size: 1.2rem;
-  padding: 0.5rem;
+export const ListBox = styled.div`
   width: 100%;
-  box-sizing: border-box;
-`;
-
-export const FoodImage = styled.image`
-  background-image: url("https://i0.wp.com/seonkyounglongest.com/wp-content/uploads/2018/04/shoyu-ramen-1.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  padding-top: 56.25%;
-`;
-
-export const TopSectionContainer = styled.div`
+  height: max-content;
+  overflow: hidden;
+  overflow-y: scroll;
   display: flex;
-  flex-direction: row;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+`;
+
+export const ListColumn = styled.div`
+  height: 100%;
+  width: 100%;
+  flex: ${(props) => props.flex};
+`;
+
+export const SectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: start;
-  width: 100%;
-  flex: 3;
-`;
-
-export const BtmSectionContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  width: 100%;
+  height: 100%;
   flex: 1;
+  padding: 2rem;
+  box-sizing: border-box;
+  flex: ${(props) => props.flex};
+`;
+
+export const ScrollContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
 `;

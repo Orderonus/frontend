@@ -12,6 +12,14 @@ export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
+`;
+
+export const PageContainer = styled.div`
+  flex: 9;
+  height: 100%;
+  width: 100%;
 `;
 
 export const NavMenu = styled.div`
@@ -31,6 +39,5 @@ export const MenuCards = styled.div`
   grid-gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 20rem;
-  overflow: hidden;
   overflow-y: auto;
 `;
